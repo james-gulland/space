@@ -1,4 +1,4 @@
-const FirstDay = ({ apodData, handleNext, textDate }) => {
+const FirstDay = ({ apodData, handleNext, textDate, shake }) => {
 
   const dateString = apodData && apodData[0].date
 
@@ -10,7 +10,7 @@ const FirstDay = ({ apodData, handleNext, textDate }) => {
           </div>
         </div>
         <>
-          <div id="book-container">
+          <div id="book-container" className={shake ? 'shake' : ''}>
             <div id="left-book-container" className="book">
               <div id="image-container" style={{ backgroundImage: `url(${apodData[0].url})` }}>
                 <h1>{apodData && apodData[0].title}</h1>

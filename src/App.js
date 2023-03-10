@@ -4,7 +4,7 @@ import { LocalizationProvider, DatePicker } from '@mui/x-date-pickers'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import dayjs from 'dayjs'
 import logo from './images/logo.svg'
-import audio from './images/audio.png'
+// import audio from './images/audio.png'
 import bgVid from './images/bg-vid.mp4'
 import NormalDay from './components/NormalDay'
 import FirstDay from './components/FirstDay'
@@ -30,6 +30,7 @@ const App = () => {
   const [apodData, setApodData] = useState(null)
   const [finalDay, setFinalDay] = useState(false)
   const [startDay, setStartDay] = useState(false)
+  const [shake, setShake] = useState(false)
 
   const apiKey = 'api_key=Q4kRhUWWaJwstMN4fCpKVsjpbqRqAYmIe2zrt0df'
 
@@ -118,7 +119,10 @@ const App = () => {
     const randomDate = new Date(randomTimeDate.getFullYear(), randomTimeDate.getMonth(), randomTimeDate.getDate())
     setSelectedDate(randomDate)
     setPickerDate(dayjs(randomDate))
+    setShake(true)
+    setTimeout(() => setShake(false), 1500)
   }
+
 
   return (
     <>
@@ -139,15 +143,15 @@ const App = () => {
           </header>
 
           {apodData && apodData.length === 3 && (
-            <NormalDay apodData={apodData} handlePrevious={handlePrevious} handleNext={handleNext} textDate={textDate} />
+            <NormalDay apodData={apodData} handlePrevious={handlePrevious} handleNext={handleNext} textDate={textDate} shake={shake} />
           )}
 
           {apodData && apodData.length === 2 && finalDay && (
-            <LastDay apodData={apodData} handlePrevious={handlePrevious} textDate={textDate} />
+            <LastDay apodData={apodData} handlePrevious={handlePrevious} textDate={textDate} shake={shake} />
           )}
 
           {apodData && apodData.length === 2 && startDay && (
-            <FirstDay apodData={apodData} handleNext={handleNext} textDate={textDate} />
+            <FirstDay apodData={apodData} handleNext={handleNext} textDate={textDate} shake={shake} />
           )}
 
           <footer>

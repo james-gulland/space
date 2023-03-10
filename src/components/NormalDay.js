@@ -1,4 +1,4 @@
-const NormalDay = ({ apodData, handlePrevious, handleNext, textDate }) => {
+const NormalDay = ({ apodData, handlePrevious, handleNext, textDate, shake }) => {
 
   const dateString = apodData && apodData[1].date
 
@@ -17,7 +17,7 @@ const NormalDay = ({ apodData, handlePrevious, handleNext, textDate }) => {
           </div>
         </div>
         <>
-          <div id="book-container">
+          <div id="book-container" className={shake ? 'shake' : ''}>
             <div id="left-book-container" className="book">
               <div id="image-container" style={{ backgroundImage: `url(${apodData[1].url})` }}>
                 <h1>{apodData && apodData[1].title}</h1>
@@ -27,7 +27,7 @@ const NormalDay = ({ apodData, handlePrevious, handleNext, textDate }) => {
               </div>
             </div>
             <div id="right-book-container" className="book">
-              <div id="explanation-container">
+              <div id="explanation-container" >
                 <h2>{textDate(dateString)}</h2>
                 <div id="explanation">
                   {apodData && apodData[1].explanation}

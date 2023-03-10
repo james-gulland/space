@@ -32,7 +32,7 @@ const App = () => {
   const [startDay, setStartDay] = useState(false)
   const [shake, setShake] = useState(false)
 
-  const apiKey = 'api_key=Q4kRhUWWaJwstMN4fCpKVsjpbqRqAYmIe2zrt0df'
+  const apiKey = process.env.REACT_APP_API_KEY
 
   const startDate = getStartDate(selectedDate)
   const endDate = getEndDate(selectedDate)
@@ -123,6 +123,12 @@ const App = () => {
     setTimeout(() => setShake(false), 1500)
   }
 
+  function todayReset() {
+    const currentDate = new Date()
+    const todayDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate())
+    setSelectedDate(todayDate)
+    setPickerDate(dayjs(todayDate))
+  }
 
   return (
     <>
@@ -132,7 +138,7 @@ const App = () => {
 
           <header>
             <div id="logo">
-              <img src={logo} alt="Logo" />
+              <img src={logo} alt="Logo" onClick={todayReset} />
             </div>
             <div id="dropdown">
               <DatePicker inputFormat="DD/MM/YYYY" format="DD/MM/YYYY" views={['day']} value={pickerDate} onChange={handleChange} maxDate={maxDate} minDate={minDate} className="date-picker" />

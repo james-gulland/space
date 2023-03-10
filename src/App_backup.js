@@ -3,7 +3,7 @@ import axios from 'axios'
 import { LocalizationProvider, DatePicker } from '@mui/x-date-pickers'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import dayjs from 'dayjs'
-import logo from './images/logo.svg'
+import mySvg from './images/logo.svg'
 import audio from './images/audio.png'
 import bgVid from './images/bg-vid.mp4'
 import NormalDay from './components/NormalDay'
@@ -19,14 +19,11 @@ function formatDateString(date) {
 
 const App = () => {
 
-  const currentDate = new Date()
-  const todayDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate())
+  const minDate = dayjs('1995-06-20').startOf('day')
+  const maxDate = dayjs().startOf('day')
 
-  const [minDate, setMinDate] = useState(dayjs('1995-06-20').startOf('day'))
-  const [maxDate, setMaxDate] = useState(dayjs().startOf('day'))
-
-  const [pickerDate, setPickerDate] = useState(dayjs())
-  const [selectedDate, setSelectedDate] = useState(todayDate)
+  const [pickerDate, setPickerDate] = useState(dayjs('2023-03-01'))
+  const [selectedDate, setSelectedDate] = useState(new Date('2023-03-01'))
   const [apodData, setApodData] = useState(null)
   const [finalDay, setFinalDay] = useState(false)
   const [startDay, setStartDay] = useState(false)
@@ -38,8 +35,7 @@ const App = () => {
 
 
   function getStartDate(selectedDate) {
-    const comparatorDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate())
-    if (JSON.stringify(comparatorDate) !== JSON.stringify(minDate.$d)) {
+    if (JSON.stringify(selectedDate) !== JSON.stringify(minDate.$d)) {
       const yesterday = new Date(selectedDate.getTime())
       yesterday.setDate(selectedDate.getDate() - 1)
       const startDate = formatDateString(yesterday)
@@ -51,8 +47,7 @@ const App = () => {
   }
 
   function getEndDate(selectedDate) {
-    const comparatorDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate())
-    if (JSON.stringify(comparatorDate) !== JSON.stringify(maxDate.$d)) {
+    if (JSON.stringify(selectedDate) !== JSON.stringify(maxDate.$d)) {
       const tomorrow = new Date(selectedDate.getTime())
       tomorrow.setDate(selectedDate.getDate() + 1)
       const endDate = formatDateString(tomorrow)
@@ -63,22 +58,8 @@ const App = () => {
     }
   }
 
-  function textDate(date) {
-    const newDate = new Date(date)
-    const options = { day: 'numeric', month: 'long', year: 'numeric' }
-    const dateLong = newDate.toLocaleDateString('en-GB', options)
-    return dateLong
-  }
-
   useEffect(() => {
     const getData = async () => {
-      if (selectedDate < minDate.$d || selectedDate > maxDate.$d) {
-        console.log(selectedDate)
-        console.log(minDate.$d)
-        console.log(maxDate.$d)
-        return
-      }
-      console.log(selectedDate)
       const { data } = await axios.get(`https://api.nasa.gov/planetary/apod?${apiKey}&${startDate}&${endDate}`)
       console.log(data)
       setApodData(data)
@@ -86,82 +67,70 @@ const App = () => {
       setStartDay(JSON.stringify(selectedDate) === JSON.stringify(minDate.$d))
     }
     getData()
-  }, [selectedDate, endDate, maxDate.$d, minDate.$d, startDate])
+  }, [selectedDate])
 
   const handleChange = (e) => {
     const newSelection = new Date(e.$d)
-    console.log(newSelection)
-    const newDate = new Date(newSelection.getFullYear(), newSelection.getMonth(), newSelection.getDate())
-    setSelectedDate(newDate)
+    setSelectedDate(newSelection)
     setPickerDate(e)
-  }
-
-  const handlePrevious = (e) => {
-    const prevDate = new Date(selectedDate.getTime())
-    prevDate.setDate(selectedDate.getDate() - 1)
-    setSelectedDate(prevDate)
-    setPickerDate(dayjs(prevDate))
-  }
-
-  const handleNext = (e) => {
-    const nextDate = new Date(selectedDate.getTime())
-    nextDate.setDate(selectedDate.getDate() + 1)
-    setSelectedDate(nextDate)
-    setPickerDate(dayjs(nextDate))
-  }
-
-  function randomDate() {
-    const startDate = new Date('1995-06-20')
-    const endDate = new Date()
-    const randomTime = startDate.getTime() + Math.random() * (endDate.getTime() - startDate.getTime())
-    const randomTimeDate = new Date(randomTime)
-    const randomDate = new Date(randomTimeDate.getFullYear(), randomTimeDate.getMonth(), randomTimeDate.getDate())
-    setSelectedDate(randomDate)
-    setPickerDate(dayjs(randomDate))
   }
 
   return (
     <>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
-
         <div id="wrapper">
-
           <header>
             <div id="logo">
-              <img src={logo} alt="Logo" />
+              <img src={mySvg} />
             </div>
             <div id="dropdown">
               <DatePicker inputFormat="DD/MM/YYYY" format="DD/MM/YYYY" views={['day']} value={pickerDate} onChange={handleChange} maxDate={maxDate} minDate={minDate} className="date-picker" />
             </div>
             <div id="sound">
-              <button>Sound</button>
+              <img src={audio} />
             </div>
           </header>
 
+
           {apodData && apodData.length === 3 && (
-            <NormalDay apodData={apodData} handlePrevious={handlePrevious} handleNext={handleNext} textDate={textDate} />
+            <NormalDay apodData={apodData} />
           )}
 
           {apodData && apodData.length === 2 && finalDay && (
-            <LastDay apodData={apodData} handlePrevious={handlePrevious} textDate={textDate} />
+            <LastDay apodData={apodData} />
           )}
 
           {apodData && apodData.length === 2 && startDay && (
-            <FirstDay apodData={apodData} handleNext={handleNext} textDate={textDate} />
+            <FirstDay apodData={apodData} />
           )}
 
+
           <footer>
-            <button id='random' onClick={randomDate}>Random</button>
+            <button id="random">Random</button>
           </footer>
           <video id="background-video" autoPlay loop muted>
             <source src={bgVid} type="video/mp4" />
           </video>
 
         </div>
-
       </LocalizationProvider>
     </>
   )
 }
 
 export default App
+
+
+// For a video
+// Check if media type is video
+//   If so, insert this instead
+//               <iframe width="420" height="315"
+//                src="https://www.youtube.com/embed/hQFEHH5E69s?rel=0&autoplay=1&mute=1&loop=1&playlist=hQFEHH5E69s">  ! Note playlist=parameter
+//               </iframe>
+// 
+//                <iframe src="https://player.vimeo.com/video/25808333" frameborder="0"></iframe>
+
+// {/* <label htmlFor="date-picker">Pick a date</label> */ }
+// {/* ! Need to check this out */ }
+// {/* <input type="date" name="date-picker" id="date-picker" min="1995-01-01" max="2023-03-09" onChange={handleChange} /> */ }
+// {/* <DatePicker selected={selectedDate} onChange={(date) => setSelectedDate(date)} /> */ }

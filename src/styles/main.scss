@@ -73,9 +73,9 @@ main {
     cursor: pointer;
   }
 
-  #previous-image img, #next-image img {
+  #previous-image img, #next-image img, #previous-image iframe, #next-image iframe {
     border-radius: 8px;
-    // height: 5em;
+    height: 5em;
     width: 6em;
     text-align: center;
     box-shadow: 1px 0px 20px white;
@@ -122,6 +122,7 @@ main {
     background-repeat: none;
     background-size: cover;
     background-position: center;
+    background-color: #000000;
     // animation: slideUp .8s ease forwards .5s;
   }
 
@@ -179,6 +180,7 @@ main {
   width: 6em;
   &:hover {
     background-color: rgb(249,250,251);
+    transform: rotate(-3deg);
   }
   &:focus {
     outline: 2px solid transparent;
@@ -188,7 +190,7 @@ main {
     box-shadow: none;
   }
   &:active {
-    transform: scale(0.95);
+    transform: scale(0.95) rotate(-3deg);
   }
 }
 
@@ -236,6 +238,15 @@ footer {
 
 footer button {
   margin: 2em;
+}
+
+iframe {
+  height: 325px;
+  width: 400px;
+}
+
+#sound {
+  visibility: hidden;
 }
 
 video {

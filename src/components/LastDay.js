@@ -1,28 +1,31 @@
-const LastDay = ({ apodData }) => {
+const LastDay = ({ apodData, handlePrevious, textDate }) => {
 
-  const date = apodData && apodData[1].date
+  const dateString = apodData && apodData[1].date
 
   return (
     <>
       <main>
         <div id="previous-container" className="controls">
           <div id="previous-image" >
-            {apodData && <img src={apodData[0].hdurl} alt="Previous" />}
+            {apodData && <img src={apodData[0].url} alt="Testing" onClick={handlePrevious} />}
           </div>
-          <div id="previous-button">
-            <button id="previous">Previous</button>
+          <div id="previous-button" onClick={handlePrevious}>
+            <button id='previous'>Previous</button>
           </div>
         </div>
         <>
           <div id="book-container">
             <div id="left-book-container" className="book">
-              <div id="image-container" style={{ backgroundImage: `url(${apodData[1].hdurl})` }}>
+              <div id="image-container" style={{ backgroundImage: `url(${apodData[1].url})` }}>
                 <h1>{apodData && apodData[1].title}</h1>
+                {apodData[1].media_type === 'video' && (
+                  < iframe src={apodData[1].url} title={apodData[1].title} frameBorder='0'></iframe>
+                )}
               </div>
             </div>
             <div id="right-book-container" className="book">
               <div id="explanation-container">
-                <h2>{date}</h2>
+                <h2>{textDate(dateString)}</h2>
                 <div id="explanation">
                   {apodData && apodData[1].explanation}
                 </div>

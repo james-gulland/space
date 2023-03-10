@@ -4,6 +4,7 @@ import { LocalizationProvider, DatePicker } from '@mui/x-date-pickers'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import dayjs from 'dayjs'
 import logo from './images/nasa-logo.png'
+import mySvg from './images/logo.svg'
 import audio from './images/audio.png'
 import bgVid from './images/bg-vid.mp4'
 import NormalDay from './components/NormalDay'
@@ -81,7 +82,7 @@ const App = () => {
         <div id="wrapper">
           <header>
             <div id="logo">
-              <img src={logo} />
+              <img src={mySvg} />
             </div>
             <div id="dropdown">
               <DatePicker inputFormat="DD/MM/YYYY" format="DD/MM/YYYY" views={['day']} value={pickerDate} onChange={handleChange} maxDate={maxDate} minDate={minDate} className="date-picker" />

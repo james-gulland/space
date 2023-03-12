@@ -2,7 +2,6 @@ const NormalDay = ({ apodData, handlePrevious, handleNext, textDate, shake }) =>
 
   const dateString = apodData && apodData[1].date
 
-  const silly = 'http'
   const originalURL = apodData[1].url
   const escapedURL = originalURL.replace(/\(/g, '\\(').replace(/\)/g, '\\)')
 

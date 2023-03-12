@@ -2,6 +2,9 @@ const LastDay = ({ apodData, handlePrevious, textDate, shake }) => {
 
   const dateString = apodData && apodData[1].date
 
+  const originalURL = apodData[1].url
+  const escapedURL = originalURL.replace(/\(/g, '\\(').replace(/\)/g, '\\)')
+
   return (
     <>
       <main>
@@ -16,7 +19,7 @@ const LastDay = ({ apodData, handlePrevious, textDate, shake }) => {
         <>
           <div id="book-container" className={shake ? 'shake' : ''}>
             <div id="left-book-container" className="book">
-              <div id="image-container" style={{ backgroundImage: `url(${apodData[1].url})` }}>
+              <div id="image-container" style={{ backgroundImage: `url(${escapedURL})` }}>
                 <h1>{apodData && apodData[1].title}</h1>
                 {apodData[1].media_type === 'video' && (
                   < iframe src={apodData[1].url} title={apodData[1].title} frameBorder='0'></iframe>

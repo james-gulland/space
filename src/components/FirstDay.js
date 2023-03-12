@@ -12,7 +12,7 @@ const FirstDay = ({ apodData, handleNext, textDate, shake }) => {
         <>
           <div id="book-container" className={shake ? 'shake' : ''}>
             <div id="left-book-container" className="book">
-              <div id="image-container" style={{ backgroundImage: `url(${apodData[0].url})` }}>
+              <div id="image-container" style={{ backgroundImage: `url"(${apodData[0].url}")` }}>
                 <h1>{apodData && apodData[0].title}</h1>
                 {apodData[0].media_type === 'video' && (
                   < iframe src={apodData[0].url} title={apodData[0].title} frameBorder='0'></iframe>

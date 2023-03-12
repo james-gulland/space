@@ -37,7 +37,6 @@ const App = () => {
   const startDate = getStartDate(selectedDate)
   const endDate = getEndDate(selectedDate)
 
-
   function getStartDate(selectedDate) {
     const comparatorDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate())
     if (JSON.stringify(comparatorDate) !== JSON.stringify(minDate.$d)) {
@@ -64,6 +63,7 @@ const App = () => {
     }
   }
 
+  // takes date and returns in a more 'friendly' human way for journal
   function textDate(date) {
     const newDate = new Date(date)
     const options = { day: 'numeric', month: 'long', year: 'numeric' }

@@ -2,6 +2,7 @@
 
 $book: #624A2E;
 $height: 40em;
+$height_sm: 36em;
 
 * {
   box-sizing: border-box;
@@ -215,7 +216,7 @@ footer {
 }
 
 footer > button {
-  margin: 2em;
+  margin: 2em 0 0 0;
 }
 
 iframe {
@@ -286,4 +287,17 @@ video {
   top: 0;
   left: 0;
   z-index: -1;
+}
+
+@media (max-width: 1600px) {
+
+  header {
+    #logo img {
+      height: 6em;
+    }
+  }
+
+  main .controls, main .book {
+    height: $height_sm;
+  }
 }

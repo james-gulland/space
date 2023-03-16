@@ -9,7 +9,8 @@ $height_sm: 36em;
 }
 
 #wrapper {
-  margin: 0;
+  margin: 0 auto;
+  max-width: 1800px;
   padding: 0;
   top: 0;
   left: 0;
@@ -289,6 +290,83 @@ video {
   z-index: -1;
 }
 
+
+// MOBILE WORKING
+@media (max-width: 1200px) {
+  
+  #sound {
+    display: none;
+  }
+  
+  header {
+    padding: 0;
+  }
+
+  main {
+
+    width: 95%;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    #book-container {
+      flex-direction: column;
+      order: -1;
+      // position: relative;
+      // width: 100%;
+  
+      #left-book-container {
+        width: 100%;
+        // flex-grow: 1;
+        margin: 0 auto;
+      }
+  
+      #right-book-container {
+        width: 100%;
+        margin: 0 auto;
+        // flex-grow: 1;
+      }
+      
+    }
+
+    #previous-container, #next-container {
+      // display: none;
+      height: auto;
+      // flex-grow: 1;
+    }
+
+    .book {
+      background-color: transparent;
+    }
+
+    #image-container, #explanation-container {
+      // height: 100%;
+      // position: absolute;
+      border: 1px solid white;
+      box-shadow: white 0px 2px 8px 2px;
+      border-radius: 5px;
+      padding: 0;
+      margin: 0;
+    }
+
+    .controls {
+      flex-direction: row;
+    }
+
+    #previous-button, #next-button {
+      margin: 0 0 0 2em;
+    }
+
+    footer > button {
+      margin: 2em 0 2em 0;
+    }
+
+  }
+
+}
+
+
+
+// fixing book sizing and general padding for smaller laptop sizes
 @media (max-width: 1600px) {
   
   header {

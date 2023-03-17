@@ -292,7 +292,7 @@ video {
 
 
 // MOBILE WORKING
-@media (max-width: 1200px) {
+@media (max-width: 1000px) {
   
   #sound {
     display: none;
@@ -300,6 +300,16 @@ video {
   
   header {
     padding: 0;
+    // justify-content: center;
+
+    #logo img {
+      height: 4em;
+    }
+
+    .date-picker {
+      margin: 0 auto;
+      margin-right: 5%;
+    }
   }
 
   main {
@@ -311,8 +321,6 @@ video {
     #book-container {
       flex-direction: column;
       order: -1;
-      // position: relative;
-      // width: 100%;
   
       #left-book-container {
         width: 100%;
@@ -323,15 +331,24 @@ video {
       #right-book-container {
         width: 100%;
         margin: 0 auto;
-        // flex-grow: 1;
       }
       
     }
 
     #previous-container, #next-container {
-      // display: none;
       height: auto;
-      // flex-grow: 1;
+      // flex-direction: column;
+      display: block;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+    }
+
+    #previous-button, #next-button {
+      // align-items: center;
+      // justify-content: center;
+      // margin: 0 auto;
     }
 
     .book {
@@ -339,8 +356,6 @@ video {
     }
 
     #image-container, #explanation-container {
-      // height: 100%;
-      // position: absolute;
       border: 1px solid white;
       box-shadow: white 0px 2px 8px 2px;
       border-radius: 5px;
@@ -350,10 +365,8 @@ video {
 
     .controls {
       flex-direction: row;
-    }
+      width: auto;
 
-    #previous-button, #next-button {
-      margin: 0 0 0 2em;
     }
 
     footer > button {
@@ -364,9 +377,34 @@ video {
 
 }
 
+// fixing tablet and smaller laptop sizes / big phones
+@media (max-width: 1200px) {
+  
+  header {
+    #logo img {
+      height: 6em;
+    }
+  }
 
+  main {
+    flex-wrap: wrap;
+  }
 
-// fixing book sizing and general padding for smaller laptop sizes
+  #book-container {
+    order: -1;
+  }
+
+  #previous-container, #next-container {
+    height: auto;
+    margin-top: 1em;
+  }
+
+  main .controls, main .book {
+    height: $height_sm;
+  }
+}
+
+// fixing for smaller laptop sizes 14" retina screens
 @media (max-width: 1600px) {
   
   header {

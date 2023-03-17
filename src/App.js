@@ -163,7 +163,7 @@ const App = () => {
           <footer>
             <button id='random' onClick={randomDate}>Random</button>
           </footer>
-          <video id="background-video" autoPlay loop muted>
+          <video id="background-video" autoPlay loop muted playsInline>
             <source src={bgVid} type="video/mp4" />
           </video>
 

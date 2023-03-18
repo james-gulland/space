@@ -328,29 +328,26 @@ video {
       transition: transform 0.6s;
       transform-style: preserve-3d;
 
-      // &:active {
-      //   transform: rotateY(180deg);
-      // }
-
+      // BACKUP - works!
       &:active {
         transform: rotateY(180deg);
       }
   
-      #left-book-container, #right-book-container {
-        height: 100%;
-        width: 100%;
-        // flex-grow: 1;
-        margin: 0 auto;
-        position: absolute;
-        -webkit-backface-visibility: hidden;
-        backface-visibility: hidden;
-        // transform: rotateY(180deg);
-      }
+        #right-book-container, #left-book-container {
+          height: 100%;
+          width: 100%;
+          // flex-grow: 1;
+          margin: 0 auto;
+          position: absolute;
+          -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+        }
 
-      #right-book-container {
-        transform: rotateY(180deg);
-      }
-      
+        // BACKUP - works!
+        #right-book-container {
+          transform: rotateY(180deg);
+        }
+
     }
 
     #previous-container, #next-container {

@@ -315,52 +315,29 @@ video {
   main {
 
     width: 95%;
-    // display: block;
     flex-direction: row;
     flex-wrap: wrap;
-    perspective: 1000px;
 
     #book-container {
       flex-direction: column;
       order: -1;
-      height: 65vh;
-      width: 95vw;
-      position: relative;
-      transition: transform 0.6s;
-      transform-style: preserve-3d;
-
-      // &:active {
-      //   transform: rotateY(180deg);
-      // }
-
-      &:active {
-        transform: rotateY(180deg);
-      }
   
-      #left-book-container, #right-book-container {
-        height: 100%;
+      #left-book-container {
         width: 100%;
         // flex-grow: 1;
         margin: 0 auto;
-        position: absolute;
-        -webkit-backface-visibility: hidden;
-        backface-visibility: hidden;
-        // transform: rotateY(180deg);
       }
-
+  
       #right-book-container {
-        transform: rotateY(180deg);
-      }
-
-      #explanation {
-        user-select: none;
+        width: 100%;
+        margin: 0 auto;
       }
       
     }
 
     #previous-container, #next-container {
       height: auto;
-      flex-direction: column;
+      // flex-direction: column;
       display: block;
       text-align: center;
       align-items: center;
@@ -381,7 +358,6 @@ video {
     }
 
     .controls {
-      display: block;
       flex-direction: row;
       width: auto;
 
@@ -406,19 +382,15 @@ video {
 
   main {
     flex-wrap: wrap;
-    // flex-basis: 100%;
   }
 
   #book-container {
     order: -1;
-    // flex-grow: 1;
-    // flex: 1;
   }
 
   #previous-container, #next-container {
     height: auto;
     margin-top: 1em;
-    flex-basis: 20%;  // hacky way to make sure previous/next buttons wrap properly
   }
 
   main .controls, main .book {

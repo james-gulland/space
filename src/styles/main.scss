@@ -323,7 +323,7 @@ video {
     #book-container {
       flex-direction: column;
       order: -1;
-      height: 65vh;
+      height: 55vh;
       width: 95vw;
       position: relative;
       transition: transform 0.6s;
@@ -351,10 +351,6 @@ video {
       #right-book-container {
         transform: rotateY(180deg);
       }
-
-      #explanation {
-        user-select: none;
-      }
       
     }
 
@@ -370,6 +366,7 @@ video {
 
     .book {
       background-color: transparent;
+      user-select: none;
     }
 
     #image-container, #explanation-container {

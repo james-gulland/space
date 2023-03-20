@@ -221,8 +221,10 @@ footer > button {
 }
 
 iframe {
-  height: 325px;
-  width: 400px;
+  // height: 325px;
+  // width: 400px;
+  height: 60%;
+  width: 100%;
 }
 
 #sound {
@@ -390,6 +392,11 @@ video {
 
 // MOBILE DEVICES (INHERITING ABOVE)
 @media (max-width: 400px) {
+
+  main h1, main h2 {
+    font-size: 2em;
+  }
+
   #previous-image, #next-image {
     display: none;
   }

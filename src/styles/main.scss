@@ -330,25 +330,30 @@ video {
       transition: transform 0.6s;
       transform-style: preserve-3d;
 
-      // BACKUP - works!
-      &:active {
+      // BACKUP - works! BUT OLD - on hold.
+      // &:active {
+      //   transform: rotateY(180deg);
+      // }
+
+      /* This will rotate the container by 180 degrees on click */
+      &.rotate {
         transform: rotateY(180deg);
       }
-  
-        #right-book-container, #left-book-container {
-          height: 100%;
-          width: 100%;
-          // flex-grow: 1;
-          margin: 0 auto;
-          position: absolute;
-          -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-        }
+      
+      #right-book-container, #left-book-container {
+        height: 100%;
+        width: 100%;
+        // flex-grow: 1;
+        margin: 0 auto;
+        position: absolute;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+      }
 
-        // BACKUP - works!
-        #right-book-container {
-          transform: rotateY(180deg);
-        }
+      // BACKUP - works!
+      #right-book-container {
+        transform: rotateY(180deg);
+      }
 
     }
 
@@ -379,7 +384,6 @@ video {
       display: block;
       flex-direction: row;
       width: auto;
-
     }
 
     footer > button {
@@ -407,6 +411,17 @@ video {
 
   iframe {
     height: 40%;
+  }
+
+
+  #previous, #next, #random {
+    &:hover {
+      // transform: rotate(-3deg);
+      transform: none;
+    }
+    &:active {
+      transform: scale(0.95) rotate(-3deg);
+    }
   }
 }
 

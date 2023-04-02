@@ -1,4 +1,4 @@
-const FirstDay = ({ apodData, handleNext, textDate, shake }) => {
+const FirstDay = ({ apodData, handleNext, textDate, shake, rotateMobile, rotateMobileView }) => {
 
   const dateString = apodData && apodData[0].date
 
@@ -10,7 +10,7 @@ const FirstDay = ({ apodData, handleNext, textDate, shake }) => {
           </div>
         </div>
         <>
-          <div id="book-container" className={shake ? 'shake' : ''}>
+          <div id="book-container" className={`${rotateMobile ? 'rotate' : ''} ${shake ? 'shake' : ''}`} onClick={rotateMobileView}>
             <div id="left-book-container" className="book">
               <div id="image-container" style={{ backgroundImage: `url"(${apodData[0].url}")` }}>
                 <h1>{apodData && apodData[0].title}</h1>

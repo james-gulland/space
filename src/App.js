@@ -9,6 +9,9 @@ import bgVid from './images/bg-vid.mp4'
 import NormalDay from './components/NormalDay'
 import FirstDay from './components/FirstDay'
 import LastDay from './components/LastDay'
+import Header from './components/Header'
+import Video from './components/Video'
+import Footer from './components/Footer'
 
 function formatDateString(date) {
   const year = date.getFullYear()
@@ -142,17 +145,7 @@ const App = () => {
 
         <div id="wrapper">
 
-          <header>
-            <div id="logo">
-              <img src={logo} alt="Logo" onClick={todayReset} />
-            </div>
-            <div id="dropdown">
-              <DatePicker inputFormat="DD/MM/YYYY" format="DD/MM/YYYY" views={['day']} value={pickerDate} onChange={handleChange} maxDate={maxDate} minDate={minDate} className="date-picker" />
-            </div>
-            <div id="sound">
-              <button>Sound</button>
-            </div>
-          </header>
+          <Header DatePicker={DatePicker} logo={logo} todayReset={todayReset} pickerDate={pickerDate} minDate={minDate} maxDate={maxDate} handleChange={handleChange} />
 
           {apodData && apodData.length === 3 && (
             <NormalDay apodData={apodData} handlePrevious={handlePrevious} handleNext={handleNext} textDate={textDate} shake={shake} rotateMobileView={rotateMobileView} rotateMobile={rotateMobile}/>
@@ -166,12 +159,9 @@ const App = () => {
             <FirstDay apodData={apodData} handleNext={handleNext} textDate={textDate} shake={shake} rotateMobileView={rotateMobileView} rotateMobile={rotateMobile}/>
           )}
 
-          <footer>
-            <button id='random' onClick={randomDate}>Random</button>
-          </footer>
-          <video id="background-video" autoPlay loop muted playsInline>
-            <source src={bgVid} type="video/mp4" />
-          </video>
+          <Footer randomDate={randomDate} />
+
+          <Video bgVid={bgVid} />
 
         </div>
 

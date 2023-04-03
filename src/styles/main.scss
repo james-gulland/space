@@ -9,7 +9,8 @@ $height_sm: 36em;
 }
 
 #wrapper {
-  margin: 0;
+  margin: 0 auto;
+  max-width: 1800px;
   padding: 0;
   top: 0;
   left: 0;
@@ -220,8 +221,10 @@ footer > button {
 }
 
 iframe {
-  height: 325px;
-  width: 400px;
+  // height: 325px;
+  // width: 400px;
+  height: 60%;
+  width: 100%;
 }
 
 #sound {
@@ -289,8 +292,174 @@ video {
   z-index: -1;
 }
 
-@media (max-width: 1600px) {
+// TABLETS & LARGER MOBILES
+@media (max-width: 1000px) {
+  
+  #sound {
+    display: none;
+  }
+  
+  header {
+    padding: 0;
+    // justify-content: center;
 
+    #logo img {
+      height: 4em;
+    }
+
+    .date-picker {
+      // margin: 0 auto;
+      margin-right: 5%;
+    }
+  }
+
+  main {
+
+    width: 95%;
+    // display: block;
+    flex-direction: row;
+    flex-wrap: wrap;
+    perspective: 1000px;
+
+    #book-container {
+      flex-direction: column;
+      order: -1;
+      height: 60vh;
+      width: 95vw;
+      position: relative;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+
+      // BACKUP - works! BUT OLD - on hold.
+      // &:active {
+      //   transform: rotateY(180deg);
+      // }
+
+      /* This will rotate the container by 180 degrees on click */
+      &.rotate {
+        transform: rotateY(180deg);
+      }
+      
+      #right-book-container, #left-book-container {
+        height: 100%;
+        width: 100%;
+        // flex-grow: 1;
+        margin: 0 auto;
+        position: absolute;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+      }
+
+      // BACKUP - works!
+      #right-book-container {
+        transform: rotateY(180deg);
+      }
+
+    }
+
+    #previous-container, #next-container {
+      height: auto;
+      flex-direction: column;
+      display: block;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+    }
+
+    .book {
+      background-color: transparent;
+      user-select: none;
+    }
+
+    #image-container, #explanation-container {
+      border: 1px solid white;
+      box-shadow: white 0px 2px 8px 2px;
+      border-radius: 5px;
+      padding: 0;
+      margin: 0;
+    }
+
+    .controls {
+      display: block;
+      flex-direction: row;
+      width: auto;
+    }
+
+    footer > button {
+      margin: 2em 0 2em 0;
+    }
+
+  }
+
+}
+
+// MOBILE DEVICES (INHERITING ABOVE)
+@media (max-width: 400px) {
+
+  main h1, main h2 {
+    font-size: 2em;
+  }
+
+  #previous-image, #next-image {
+    display: none;
+  }
+
+  #previous, #next {
+    margin-top: 0;
+  }
+
+  iframe {
+    height: 40%;
+  }
+
+
+  #previous, #next, #random {
+    &:hover {
+      // transform: rotate(-3deg);
+      transform: none;
+    }
+    &:active {
+      transform: scale(0.95) rotate(-3deg);
+    }
+  }
+}
+
+
+// SMALLER LAPTOPS
+@media (max-width: 1200px) {
+  
+  header {
+    #logo img {
+      height: 6em;
+    }
+  }
+
+  main {
+    flex-wrap: wrap;
+    // flex-basis: 100%;
+  }
+
+  #book-container {
+    order: -1;
+    // flex-grow: 1;
+    // flex: 1;
+  }
+
+  #previous-container, #next-container {
+    height: auto;
+    margin-top: 1em;
+    flex-basis: 20%;  // hacky way to make sure previous/next buttons wrap properly
+  }
+
+  main .controls, main .book {
+    height: $height_sm;
+  }
+}
+
+// MEDIUM LAPTOPS
+@media (max-width: 1600px) {
+  
   header {
     #logo img {
       height: 6em;

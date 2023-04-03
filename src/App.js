@@ -31,12 +31,12 @@ const App = () => {
   const [finalDay, setFinalDay] = useState(false)
   const [startDay, setStartDay] = useState(false)
   const [shake, setShake] = useState(false)
+  const [rotateMobile, setRotateMobile] = useState(false)
 
   const apiKey = process.env.REACT_APP_API_KEY
 
   const startDate = getStartDate(selectedDate)
   const endDate = getEndDate(selectedDate)
-
 
   function getStartDate(selectedDate) {
     const comparatorDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate())
@@ -64,6 +64,7 @@ const App = () => {
     }
   }
 
+  // takes date and returns in a more 'friendly' human way for journal
   function textDate(date) {
     const newDate = new Date(date)
     const options = { day: 'numeric', month: 'long', year: 'numeric' }
@@ -119,6 +120,7 @@ const App = () => {
     const randomDate = new Date(randomTimeDate.getFullYear(), randomTimeDate.getMonth(), randomTimeDate.getDate())
     setSelectedDate(randomDate)
     setPickerDate(dayjs(randomDate))
+    setRotateMobile(false)
     setShake(true)
     setTimeout(() => setShake(false), 1500)
   }
@@ -128,6 +130,10 @@ const App = () => {
     const todayDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate())
     setSelectedDate(todayDate)
     setPickerDate(dayjs(todayDate))
+  }
+
+  function rotateMobileView() {
+    rotateMobile ? setRotateMobile(false) : setRotateMobile(true)
   }
 
   return (
@@ -149,21 +155,21 @@ const App = () => {
           </header>
 
           {apodData && apodData.length === 3 && (
-            <NormalDay apodData={apodData} handlePrevious={handlePrevious} handleNext={handleNext} textDate={textDate} shake={shake} />
+            <NormalDay apodData={apodData} handlePrevious={handlePrevious} handleNext={handleNext} textDate={textDate} shake={shake} rotateMobileView={rotateMobileView} rotateMobile={rotateMobile}/>
           )}
 
           {apodData && apodData.length === 2 && finalDay && (
-            <LastDay apodData={apodData} handlePrevious={handlePrevious} textDate={textDate} shake={shake} />
+            <LastDay apodData={apodData} handlePrevious={handlePrevious} textDate={textDate} shake={shake} rotateMobileView={rotateMobileView} rotateMobile={rotateMobile}/>
           )}
 
           {apodData && apodData.length === 2 && startDay && (
-            <FirstDay apodData={apodData} handleNext={handleNext} textDate={textDate} shake={shake} />
+            <FirstDay apodData={apodData} handleNext={handleNext} textDate={textDate} shake={shake} rotateMobileView={rotateMobileView} rotateMobile={rotateMobile}/>
           )}
 
           <footer>
             <button id='random' onClick={randomDate}>Random</button>
           </footer>
-          <video id="background-video" autoPlay loop muted>
+          <video id="background-video" autoPlay loop muted playsInline>
             <source src={bgVid} type="video/mp4" />
           </video>
 

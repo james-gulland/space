@@ -7,7 +7,7 @@ const NormalDay = ({ apodData, handlePrevious, handleNext, textDate, shake, rota
       <main>
         <div id="previous-container" className="controls" >
           <div id="previous-image" >
-            {apodData[0].media_type === 'image' && <img src={apodData[0].url} alt="Next" onClick={handlePrevious} />}
+            {apodData[0].media_type === 'image' && <img src={apodData[0].url} alt='Previous Day Image' onClick={handlePrevious} />}
             {apodData[0].media_type === 'video' && (
               < iframe src={apodData[0].url} title={apodData[0].title} frameBorder='0'></iframe>
             )}
@@ -40,7 +40,7 @@ const NormalDay = ({ apodData, handlePrevious, handleNext, textDate, shake, rota
         <>
           <div id="next-container" className="controls">
             <div id="next-image">
-              {apodData[2].media_type === 'image' && <img src={apodData[2].url} alt="Next" onClick={handleNext} />}
+              {apodData[2].media_type === 'image' && <img src={apodData[2].url} alt='Next Day Image' onClick={handleNext} />}
               {apodData[2].media_type === 'video' && (
                 < iframe src={apodData[2].url + '?autoplay=1'} title={apodData[2].title} frameBorder='0'></iframe>
               )}

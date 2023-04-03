@@ -7,7 +7,10 @@ const LastDay = ({ apodData, handlePrevious, textDate, shake, rotateMobile, rota
       <main>
         <div id="previous-container" className="controls">
           <div id="previous-image" >
-            {apodData && <img src={apodData[0].url} alt="Testing" onClick={handlePrevious} />}
+            {apodData[0].media_type === 'image' && <img src={apodData[0].url} alt='Previous Day Image' onClick={handlePrevious} />}
+            {apodData[0].media_type === 'video' && (
+              < iframe src={apodData[0].url} title={apodData[0].title} frameBorder='0'></iframe>
+            )}
           </div>
           <div id="previous-button" onClick={handlePrevious}>
             <button id='previous'>Previous</button>

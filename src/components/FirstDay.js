@@ -32,7 +32,10 @@ const FirstDay = ({ apodData, handleNext, textDate, shake, rotateMobile, rotateM
         <>
           <div id="next-container" className="controls">
             <div id="next-image">
-              {apodData && <img src={apodData[1].url} alt="Next" onClick={handleNext}/>}
+              {apodData[1].media_type === 'image' && <img src={apodData[1].url} alt='Next Day Image' onClick={handleNext} />}
+              {apodData[1].media_type === 'video' && (
+                < iframe src={apodData[1].url + '?autoplay=1'} title={apodData[1].title} frameBorder='0'></iframe>
+              )}
             </div>
             <div id="next-button" onClick={handleNext}>
               <button id='next'>Next</button>

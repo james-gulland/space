@@ -79,7 +79,7 @@ Meanwhile I started on the overall grid, which consisted of a relatively simple 
 
 ![My Image](src/images/image16.png)
 
-API requests
+<b>API requests:</b>
 The API required us to add three variables to the URL — API key, start date, and end date.  The API key was stored in .env and retrieved as a variable.
 
 The start date, and end date, were determined by either the:
@@ -98,14 +98,14 @@ Changes to dates were handled by handleChange for the date picker, handleNext fo
 
 ![My Image](src/images/image4.png)
 
-Components
+<b>Components:</b>
 Given the first and last page would not feature a next or previous button, we created three components to reflect the HTML necessary across scenarios titled firstDay, lastDay and normalDay.
 Within each component, logical conditioning was required to determine what actions to take based on the API response. In some instances, a video was returned instead of a picture, and in rare instances neither a picture or video was returned. Due to this, conditional logic was added to ensure the correct action was being taken based on the response (for example, an image required updating the background of a Div, whereas a video required the insertion of an iframe within the Div.
 
 ![My Image](src/images/image18.png)
 
-Date Picker
-Using the default HTML date picker (<input type="date" />) led to undesirable behaviours when moving across months/years, as the date pre-populated with each change, causing an API request to be sent. To solve this, we used MUI Date Picker (React Date Picker component - MUI X) which allowed us to control and remove this undesirable behaviour. To use this date picker, we had to make use of the dayjs library as well as LocalizationProvider.
+<b>Date Picker:</b>
+Using the default HTML date picker ```<input type="date" />``` led to undesirable behaviours when moving across months/years, as the date pre-populated with each change, causing an API request to be sent. To solve this, we used MUI Date Picker (React Date Picker component - MUI X) which allowed us to control and remove this undesirable behaviour. To use this date picker, we had to make use of the dayjs library as well as LocalizationProvider.
 
 ![My Image](src/images/image5.png)
 
@@ -116,7 +116,7 @@ We also managed to find time to add our favourite post-MVP feature; a random but
 
 ![My Image](src/images/image2.png)
 
-SASS
+<b>SASS:</b>
 I had great fun creating the design and styling of the site using SASS.  Flexbox was used to display the content in a flexible manner and then aligned in the centre of the screen. 
 
 There are a lot of nice touches and details with the design aesthetics. The ‘random’ button has a moving gradient animation in the background, rotates slightly on hover, and then when clicked, produces a ‘shake’ which looks like the book has been shaken.

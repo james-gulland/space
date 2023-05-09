@@ -129,6 +129,44 @@ A particular favourite of mine was the video background, which is a free looped 
 
 ![My Image](src/images/image1.gif)
 
+<h2>Challenges</h2>
+
+1st challenge:  One of the biggest challenges on the functional side of things was finding ways to compare dates within the logic, as a Date Object includes timestamps. We resolved this by forcing all occurrences of dates to be set to midnight (00:00:00), which enabled us to compare dates with confidence.  JSON.stringify was used to compare two dates, as comparisons can’t be made with two Objects. An alternative to this would have been to use the .getTime() method, which would also have allowed for comparisons.
+
+![My Image](src/images/image10.png)
+
+2nd challenge:  One of the most challenging parts on the styling front was that the API returned all sorts of image sizes, horizontal and vertical orientations, as well as differing formats, such as gif and youtube videos.  We had to cater for all content possible, so I had to set the background-image properties that would cater for all scenarios.  We managed to control youtube videos separately in SASS also and render these correctly when viewed.
+
+![My Image](src/images/image6.png)
+
+3rd challenge: As we had limited time to complete the project, we found that we had to resort to writing non-optimal code that solves short-term problems, rather than think about the long-term.  For example, we could have refactored the functions to be more reusable and streamlined, and the front-end could have been written in a more responsive way to cater for a wider range of devices and screen sizes.
+
+<h2>Wins</h2>
+
+We got a working solution together pretty quickly, the end solution is very stable, and fits all types of content really well.  We are very happy with the end result as it looks really amazing, and we got great feedback when it was presented to the wider group.
+
+We got all of the MVP features and post-MVP features implemented, with the exception of adding an audio playback.  However, we were very selective to ensure quality over quantity.
+
+This was definitely a passion project of ours and we want to continue to improve it.  I really enjoyed working with Ali; we definitely had a good balance of skills and we collaborated together very closely.  He was a pleasure to work with from start to finish.
+
+<h2>Key Learnings</h2>
+
+We both feel a lot more comfortable with React.js useStates and useEffects, as well as consuming API data, and testing them using Insomnia.  We also learnt some new things about using API keys and deploying the site to Netlify.
+
+I also got a chance to expand experience with using SASS, including animations, transform, and keyframes, as well as video background.
+
+<h2>Bugs</h2>
+
+Nothing to note here.
+
+<h2>Future Improvements</h2>
+
+1) Add mobile responsive - it currently doesn’t work on mobile or responsive layouts, so this would be the first thing I would like to improve.
+- UPDATE: This has now been updated and live!
+2) Have the ability to maximise the content in a larger screen - i.e. to show the high quality images more effectively if the user wants to.
+3) Add audio - we ran out of time to add this in, but it would be nice to have an ambient soundtrack like you are speeding through space :)
+4) Add some cool transitions / animations to emulate the turning of a page when clicking next or previous buttons.  A little gimmicky and could look tacky, but worth exploring.
+
 
 
 

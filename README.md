@@ -8,6 +8,8 @@ The second GA Software Engineering immersive course project was in week 7 of the
 
 https://journalinspace.com/
 
+![My Image](src/images/nasa.png)
+
 <h3>Timeframe & Working Team</h3>
 
 This project was working in a pair with a duration of 2 days (1.5 effective days of coding) for completion.  I worked with fellow General Assembly member Ali Abed-Ali. 

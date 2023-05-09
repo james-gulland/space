@@ -8,7 +8,7 @@ The second GA Software Engineering immersive course project was in week 7 of the
 
 https://journalinspace.com/
 
-![My Image](src/images/nasa.png)
+![My Image](src/images/nasa2.png)
 
 <h3>Timeframe & Working Team</h3>
 

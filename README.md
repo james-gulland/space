@@ -1,23 +1,26 @@
-# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) GA London React Template
+<h1>Project 2: Journal In Space</h1>
 
-## Update the Proxy Server
+<h2>Project Overview</h2>
 
-By default, the proxy server is set up to point at port 8000, if you need to do so update in `setupProxy.js` where commented.
+The second GA Software Engineering immersive course project was in week 7 of the course, with the brief of building a React app that consumes a public API.  We chose an Open API provided by NASA called Astronomy Picture of the Day (APOD), which updates daily with NASA photography, an explanation, along with other data, that we would display in our React app and then deploy to the web.
 
-## Using NPM
+<h3>Deployment link</h3>
 
-`npm run start` or `npm run dev`  to run the development server
+https://journalinspace.com/
 
-`npm run build` to create a build directory
+<h3>Timeframe & Working Team</h3>
 
-## Using Yarn
+This project was working in a pair with a duration of 2 days (1.5 effective days of coding) for completion.  I worked with fellow General Assembly member Ali Abed-Ali. 
 
-`yarn start` or `yarn dev`  to run the development server
+<h3>Technologies Used</h3>
 
-`yarn build` to create a build directory
-
-### ⚠️
-
-To prevent the `failed-to-compile` issue for linter errors like `no-unsed-vars`, rename the `.env.example` to `.env` and restart your development server. Note this will only change the behaviour of certain linter errors to now be warnings, and is added just to allow your code to compile in development. These errors should still be fixed and other errors will still result in the code being unable to compile
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- React.js (using Hooks such as useState and useEffects)
+- SASS/SCSS
+- HTML5
+- Axios (HTTP Client for node.js and the browser)
+- DatePicker
+- VS Code
+- Excalidraw (UX wireframing)
+- Insomnia (API testing)
+- Netlify
+- Git & GitHub
